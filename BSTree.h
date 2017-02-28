@@ -10,14 +10,18 @@ typedef struct BSTree{
   BSTNode *root;
 } BSTree;
 
-//extern int llDoCheck;
+//extern int llDoCheck
 
+void insertNode(BSTNode *root, char *newName);
+
+void printNode(BSTNode *node);
 
 //allocates memory for a new tree
 BSTree *createTree();
 
 BSTNode *createNode(char *name);
 
+char *copyName(char *name);
 
 //free allocated memory
 void freeTree(BSTree **tree);
