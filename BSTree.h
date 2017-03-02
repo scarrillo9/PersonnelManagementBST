@@ -10,11 +10,6 @@ typedef struct BSTree{
   BSTNode *root;
 } BSTree;
 
-//extern int llDoCheck
-
-void insertNode(BSTNode *root, char *newName);
-
-void printNode(BSTNode *node);
 
 //allocates memory for a new tree
 BSTree *createTree();
@@ -23,26 +18,24 @@ BSTNode *createNode(char *name);
 
 char *copyName(char *name);
 
+
+
+BSTNode *insertNode(BSTNode *root, char *ncopy);
+
+BSTree *insertName(BSTree *tree, char *newName);
+
+
+
+void printNode(BSTNode *node);
+
+void printTree(BSTree *tree);
+
+
 //free allocated memory
-void freeTree(BSTree **tree);
+void freeTree(BSTree *tree);
 
-void bstFree(BSTree **tree);
-
-
-//inserting nodes into tree
-void insertName(BSTree **tree, char *employee);
-
-void insert(BSTNode **root, char *newName);
+void bstFree(BSTNode *tree);
 
 
-//cheacks if list is empty
-void printTree(BSTree **tree);
-
-//prints employees
-void print(BSTNode **root);
-
-
-//checks tree consistency, always returns 0
-//int llCheck(BSTree *tree);
 
 #endif
