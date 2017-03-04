@@ -22,7 +22,7 @@ char *copyName(char *name);
 
 BSTNode *insertNode(BSTNode *root, char *ncopy);
 
-BSTree *insertName(BSTree *tree, char *newName);
+//BSTree *insertName(BSTree *tree, char *newName);
 
 
 
@@ -30,6 +30,10 @@ void printNode(BSTNode *node);
 
 void printTree(BSTree *tree);
 
+
+BSTNode *delete(BSTNode *root, char *name);
+
+BSTNode *minimumEmployee(BSTNode *root);
 
 //free allocated memory
 void freeTree(BSTree *tree);
