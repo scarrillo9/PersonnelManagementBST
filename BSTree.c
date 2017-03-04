@@ -18,7 +18,7 @@ BSTNode *createNode(char *name){
 }//end createNode
 
 char *copyName(char *name){
-  char *copy = malloc(strlen(name+1));
+  char *copy = (char *)malloc(strlen(name+1));
   if(copy != NULL)
     strcpy(copy, name);
   return copy;
@@ -26,7 +26,7 @@ char *copyName(char *name){
 
 BSTNode *insertNode(BSTNode *root, char *ncopy){
     if(!root){
-        root = createNode(ncopy);
+        return createNode(ncopy);
         //printf("in if %s\n", root->name);
     }//end if creating root node
     
@@ -40,6 +40,7 @@ BSTNode *insertNode(BSTNode *root, char *ncopy){
     
 }//end insertNode
 
+/*
 BSTree *insertName(BSTree *tree, char *newName){
     char *ncopy = copyName(newName);
     ncopy[strlen(ncopy)] = '\0';
@@ -53,16 +54,17 @@ BSTree *insertName(BSTree *tree, char *newName){
     else if(tree->root){
         insertNode(tree->root, ncopy);
     }//end else
-    */    
+    /    
     return tree;
 }//end insertName
+*/
 
 void printNode(BSTNode *root){
     if(root){
         if(root->left)
 	  printNode(root->left);
 	
-        printf("in printNode method: %s\n", root->name);
+        printf("%s", root->name);
 
 	if(root->right)
 	  printNode(root->right);
@@ -73,13 +75,55 @@ void printTree(BSTree *tree){
   if(tree->root == NULL)
     printf("List is empty.");
   else
+    printf("Printing tree:\n");
     printNode(tree->root);
 }//end printTree
+
+BSTNode *delete(BSTNode *root, char* name){
+
+  if(!root)
+    return root;
+
+  if(strcmp(name, root->name) < 0)
+    root->left = delete(root->left, name);
+
+  else if(strcmp(name, root->name) > 0)
+    root->right = delete(root->right, name);
+
+  else if(strcmp(name, root->name) == 0){
+    if(root->left && root->right){
+      BSTNode *temp = minimumEmployee(root->right);
+      root->name = temp->name;
+      root->right = delete(root->right, temp->name);
+    }//end if root has 2 children
+    if(!root->left){
+      BSTNode *temp = root->right;
+      free(root);
+      return temp;
+    }//end if left is null
+    else if(!root->right){
+      BSTNode *temp = root->left;
+      free(root);
+      return temp;
+    }//end if right is null    
+  }//end else
+  return root;
+}//end delete
+
+BSTNode *minimumEmployee(BSTNode *root){
+  BSTNode *curr = root;
+
+  while(!curr->left)
+    curr = curr->left;
+
+  return curr;
+}//end minimum employee
+
 
 void freeTree(BSTree *tree){
   //doCheck(tree);
   bstFree(tree->root);
-  //free(tree);
+  free(tree);
 }//end freeTree
 
 void bstFree(BSTNode *root){
