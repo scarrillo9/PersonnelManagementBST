@@ -1,18 +1,25 @@
-# arch1-linked-list-demo
+# Arch1 Binary Search Tree Personnel Management System
 
 This directory contains:
-* code that implements a linked list of strings 
+* code that implements a binary search tree of strings 
 * a demo program that uses it
 
-The demo program reads lines from stdin.
-Each line is appended onto a linked list.
-After end-of-file is read, the lines are printed out.
+The demo program reads lines from a text file (names.txt).
+Each line is inserted into the binary search tree based on alphanumeric value.
+After end-of-file is read, a menu is shown with the options of either printing,
+adding a new employee, deleting an employee, and making a file with the list of
+current employees.
 
 This demo contains the following files:
- llist.h: header file of llist structure & "public" interface functions
- llist.c: implementation of linked list
- listDemo.c: a demonstration program that uses the linked list
- 
+ BSTree.h: header file of the binary search tree structure & "public" interface
+ 	   functions.
+ BSTree.c: implementation of the binary search tree with all insert, delete,
+ 	   and print functions.
+ BSTDemo.c: a demonstration program that uses the binary search tree.
+ names.txt: a sample file to be read by the demo file to implement the binary
+ 	    search tree.
+ EmployeesList.txt: once demo has ran and option 4 has been chosen,
+           	    EmployeesList.txt will be available.
 
 To compile:
 ~~~
@@ -21,7 +28,7 @@ $ make
 
 To test it, try:
 ~~~
-$ make demo
+$ ./BSTDemo
 ~~~
 
 To delete binaries:
@@ -29,28 +36,37 @@ To delete binaries:
 $ make clean
 ~~~
 
-# Things to figure out #
+When the program is first run, it will create the current binary search tree
+with the text file provided, and then the option menu will prompt the user for
+an action.
 
-1. Examine llist.h.  It defines llist's structures and declares llist's interface.
-  - seriously, look at the comments too.
-  - notice how the #ifndef/endif at the top/botom prevents multiple inclusion
-2. Peek at llist.c to see how llist's functions are implemented.
-   Be sure to check out how llCheck, llDoCheck and doCheck interact.  
-3. Peek at llistDemo to see how llist is used.
-4. Be sure you understand how these codes use malloc() and free().
-5. Notice how the Makefile specifies
-  - dependencies
-  - the default production (the first one, which happens to be called "all")
-  - how each .o file has its own productions specifying prerequisite source & include files (why?)
-  - how the (in this case, one) program is its own production specifying prerequisite .o files     
-  - the demo production.  Notice
-    - which strings are quoted
-    - what the parentheses and pipe (|) symbol are doing
-6. Try extending llist.  Perhaps
-  - adding llGet() method to llist.c and llist.h
-     - that discards the first item and returns the string it contained
-     - writing another demo (probably starting with ours) that tests llGet().
-     - be sure to use llCheck
-     - and adding Makefile productions to compile & test it
-  - the same as above, but now add llReverse that reverses list order to llist.c
+if the user prompts 1) Print current employees:
+   The program will print all employees in the tree based on the binary search
+   tree structure. Once the printing is done, user will be taken back to main menu.
 
+if the user prompts 2) Add new employee:
+   The program will prompt the user for the name of an employee to add to the
+   tree. If employee already exists in the tree, it will not be added to the tree
+   again and the user will come across the menu options again.
+
+if the user prompts 3) Remove employee:
+   The program will prompt the user for the name of an employee to delete from
+   the tree. If employee doesn't exist, nothing will be deleted and the user
+   will be taken back to the main menu options.
+
+if the user prompts 4) Create file with current employee list:
+   The program will create a new file named EmployeesList.txt with the names of
+   all the employees currently in the binary search tree based on the structure
+   of the tree. If 4 is pressed again in a future, the text file will only be
+   updated with the employees at the moment.
+
+if the user prompts z) Quit program:
+   This command ends the program and frees the current binary search tree.
+
+Code and help obtained:
+     - How to print time and date (for option 4 to put at beginning of new file)
+       stackoverflow.com/questions/3673226/how-to-print-time-in-format-2009-08-10-181754-811
+     - Got help from Ana Garcia on how to scan for user input in BSTDemo.c
+     - Refresher on how binary search trees work
+       quiz.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/
+       quiz.geeksforgeeks.org/binary-search-tree-set-2-delete/
