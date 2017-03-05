@@ -41,32 +41,42 @@ with the text file provided, and then the option menu will prompt the user for
 an action.
 
 if the user prompts 1) Print current employees:
-   The program will print all employees in the tree based on the binary search
-   tree structure. Once the printing is done, user will be taken back to main menu.
+~~~
+The program will print all employees in the tree based on the binary search
+tree structure. Once the printing is done, user will be taken back to main menu.
+~~~
 
 if the user prompts 2) Add new employee:
-   The program will prompt the user for the name of an employee to add to the
-   tree. If employee already exists in the tree, it will not be added to the tree
-   again and the user will come across the menu options again.
+~~~
+The program will prompt the user for the name of an employee to add to the
+tree. If employee already exists in the tree, it will not be added to the tree
+again and the user will come across the menu options again.
+~~~
 
 if the user prompts 3) Remove employee:
-   The program will prompt the user for the name of an employee to delete from
-   the tree. If employee doesn't exist, nothing will be deleted and the user
-   will be taken back to the main menu options.
+~~~
+The program will prompt the user for the name of an employee to delete from
+the tree. If employee doesn't exist, nothing will be deleted and the user
+will be taken back to the main menu options.
+~~~
 
 if the user prompts 4) Create file with current employee list:
+~~~
    The program will create a new file named EmployeesList.txt with the names of
    all the employees currently in the binary search tree based on the structure
    of the tree. If 4 is pressed again in a future, the text file will only be
    updated with the employees at the moment.
+~~~
 
 if the user prompts z) Quit program:
+~~~
    This command ends the program and frees the current binary search tree.
+~~~
 
 Code and help obtained:
-     - How to print time and date (for option 4 to put at beginning of new file)
+     * How to print time and date (for option 4 to put at beginning of new file)
        stackoverflow.com/questions/3673226/how-to-print-time-in-format-2009-08-10-181754-811
-     - Got help from Ana Garcia on how to scan for user input in BSTDemo.c
-     - Refresher on how binary search trees work
+     * Got help from Ana Garcia on how to scan for user input in BSTDemo.c
+     * Refresher on how binary search trees work
        quiz.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/
        quiz.geeksforgeeks.org/binary-search-tree-set-2-delete/
